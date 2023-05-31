@@ -119,48 +119,37 @@ explained in the [next section](#alternative-all-source-build).
 
 ```bash
 # source global ros
-$ source /opt/ros/<your_ros_version>/setup.bash
+source /opt/ros/noetic/setup.bash
 
 # create a catkin workspace
-$ mkdir -p catkin_ws/src && cd catkin_ws
+mkdir -p catkin_ws/src && cd catkin_ws/src
 
 # clone the driver
-$ git clone https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git src/Universal_Robots_ROS_Driver
+git clone https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git
 
 # clone the description. Currently, it is necessary to use the melodic-devel branch.
-$ git clone -b melodic-devel https://github.com/ros-industrial/universal_robot.git src/universal_robot
+# Here, we make a little change based on the primary lib. Don't use the "-b melodic-devel", just git the orignal lib
+# $ git clone -b melodic-devel https://github.com/ros-industrial/universal_robot.git src/universal_robot
+git clone https://github.com/ros-industrial/universal_robot.git 
 
 # install dependencies
-$ sudo apt update -qq
-$ rosdep update
-$ rosdep install --from-paths src --ignore-src -y
+sudo apt update -qq
+rosdep update
+rosdep install --from-paths src --ignore-src -y
 
+# Back last directory
+cd ..
 # build the workspace
-$ catkin_make
+catkin_make
 
 # activate the workspace (ie: source it)
-$ source devel/setup.bash
+source devel/setup.bash
 ```
 
-### Alternative: All-source build
-If you would like to also build the library from source, clone the library into your workspace, as
-well and build it using either `catkin_make_isolated` or [`catkin
-build`](https://catkin-tools.readthedocs.io/en/latest/verbs/catkin_build.html).
 
-```bash
-$ source /opt/ros/<your_ros_version>/setup.bash
-$ mkdir -p catkin_ws/src && cd catkin_ws
-$ git clone -b boost https://github.com/UniversalRobots/Universal_Robots_Client_Library.git src/Universal_Robots_Client_Library
-$ git clone https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git src/Universal_Robots_ROS_Driver
-$ git clone -b melodic-devel https://github.com/ros-industrial/universal_robot.git src/universal_robot
-$ sudo apt update -qq
-$ rosdep update
-$ rosdep install --from-paths src --ignore-src -y
-$ catkin_make_isolated
-$ source devel_isolated/setup.bash
-```
 
 ## Setting up a UR robot for ur_robot_driver
+
 ### Prepare the robot
 For using the *ur_robot_driver* with a real robot you need to install the
 **externalcontrol-x.x.x.urcap** which can be found [here](https://github.com/UniversalRobots/Universal_Robots_ExternalControl_URCap/releases).
