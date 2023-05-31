@@ -11,10 +11,10 @@ URSim.
 
 In this tutorial we assume the following IP settings:
 
-| Machine     | IP address     |
-|-------------|----------------|
-| Robot / VM  | 192.168.56.101 |
-| ROS machine | 192.168.56.1   |
+| Machine     | IP address   |
+| ----------- | ------------ |
+| Robot / VM  | 192.168.1.17 |
+| ROS machine | 192.168.1.7  |
 
 If your setup is different, modify the IP addresses in the following sections accordingly.
 
@@ -79,7 +79,7 @@ sent.
 To start the driver run the following command in a terminal:
 
 ```
-roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.56.101
+roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.1.17
 ```
 
 In another terminal, run
@@ -159,7 +159,7 @@ For controlling the robot using MoveIt! start the following three launch files (
 window):
 
 ```
-roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.56.101
+roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.1.17
 ```
 
 ```
