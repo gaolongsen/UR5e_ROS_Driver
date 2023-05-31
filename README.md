@@ -176,7 +176,7 @@ to do so, as otherwise endeffector positions might be off in the magnitude of ce
 For this, there exists a helper script:
 
     $ roslaunch ur_calibration calibration_correction.launch \
-      robot_ip:=<robot_ip> target_filename:="${HOME}/my_robot_calibration.yaml"
+      robot_ip:=192.168.1.17 target_filename:="${HOME}/catkin_ur/src/Universal_Robots_ROS_Driver/ur_calibration/ur5e_robot_calibration.yaml"
 
 For the parameter `robot_ip` insert the IP address on which the ROS pc can reach the robot. As
 `target_filename` provide an absolute path where the result will be saved to.
@@ -192,15 +192,14 @@ calibration](#extract-calibration-information) first.)
 
 To actually start the robot driver use one of the existing launch files
 
-    $ roslaunch ur_robot_driver <robot_type>_bringup.launch robot_ip:=192.168.56.101
+    $ roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.1.17
 
-where **<robot_type>** is one of *ur3, ur5, ur10, ur3e, ur5e, ur10e, ur16e*. Note that in this example we
-load the calibration parameters for the robot "ur10_example".
+where **<robot_type>** is **ur5** based on what we have in our lab. 
 
 If you calibrated your robot before, pass that calibration to the launch file:
 
-    $ roslaunch ur_robot_driver <robot_type>_bringup.launch robot_ip:=192.168.56.101 \
-      kinematics_config:=$(rospack find ur_calibration)/etc/ur10_example_calibration.yaml
+    $ roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.1.17 \
+      kinematics_config:="${HOME}/catkin_ur/src/Universal_Robots_ROS_Driver/ur_calibration/ur5e_robot_calibration.yaml"
 
 If the parameters in that file don't match the ones reported from the robot, the driver will output
 an error during startup, but will remain usable.
@@ -230,7 +229,7 @@ rosrun rqt_joint_trajectory_controller rqt_joint_trajectory_controller
 
 You may need to install rqt_joint_trajectory_controller by running: 
 ```
-sudo apt install ros-<ROS-DISTRO>-rqt-joint-trajectory-controller
+sudo apt install ros-noetic-rqt-joint-trajectory-controller
 ```
 where ROS-DISTRO will be replaced with your version of ROS.
 
