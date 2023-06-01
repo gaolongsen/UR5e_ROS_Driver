@@ -122,7 +122,7 @@ explained in the [next section](#alternative-all-source-build).
 source /opt/ros/noetic/setup.bash
 
 # create a catkin workspace
-mkdir -p catkin_ws/src && cd catkin_ws/src
+mkdir -p catkin_ur/src && cd catkin_ur/src
 
 # clone the driver
 git clone https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git
