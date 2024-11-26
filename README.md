@@ -135,10 +135,11 @@ git clone https://github.com/ros-industrial/universal_robot.git
 # install dependencies
 sudo apt update -qq
 rosdep update
-rosdep install --from-paths src --ignore-src -y
 
 # Back last directory
 cd ..
+rosdep install --from-paths src --ignore-src -y
+
 # build the workspace
 catkin_make
 
