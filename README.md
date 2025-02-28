@@ -177,7 +177,7 @@ to do so, as otherwise endeffector positions might be off in the magnitude of ce
 For this, there exists a helper script:
 
      roslaunch ur_calibration calibration_correction.launch \
-      robot_ip:=192.168.1.19 target_filename:="${HOME}/catkin_ur/src/Universal_Robots_ROS_Driver/ur_calibration/ur5e_robot_calibration.yaml"
+      robot_ip:=192.168.50.88 target_filename:="${HOME}/catkin_ur/src/Universal_Robots_ROS_Driver/ur_calibration/ur5e_robot_calibration.yaml"
 
 For the parameter `robot_ip` insert the IP address on which the ROS pc can reach the robot. As
 `target_filename` provide an absolute path where the result will be saved to.
@@ -193,13 +193,13 @@ calibration](#extract-calibration-information) first.)
 
 To actually start the robot driver use one of the existing launch files
 
-     roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.1.19
+     roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.50.88
 
 where **<robot_type>** is **ur5** based on what we have in our lab. 
 
 If you calibrated your robot before, pass that calibration to the launch file:
 
-     roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.1.19 \
+     roslaunch ur_robot_driver ur5e_bringup.launch robot_ip:=192.168.50.88 \
       kinematics_config:="${HOME}/catkin_ur/src/Universal_Robots_ROS_Driver/ur_calibration/ur5e_robot_calibration.yaml"
 
 If the parameters in that file don't match the ones reported from the robot, the driver will output
